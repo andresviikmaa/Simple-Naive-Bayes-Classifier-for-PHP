@@ -71,6 +71,20 @@ class NaiveBayesClassifier {
 		}
 	}
 
+	/**
+	 * Detrain all words from needed set
+	 *
+	 * @param string $words list of words
+	 * @param string $set   needed set
+	 */
+	public function deTrainAll($words, $set) {
+        $words = trim($words);
+		$words = $this->cleanKeywords(explode(" ", $words));
+		foreach($words as $w) {
+			$this->store->deTrainAllFromSet(html_entity_decode($w), $set);
+		}
+	}
+
 	public function classify($words, $count = 10, $offset = 0) {
 		$P = array();
 		$score = array();
@@ -91,6 +105,11 @@ class NaiveBayesClassifier {
 			if(empty($set)) continue;
 			$P['sets'][$set] = 0; 
 			foreach($keywords as $word) {
+				// will skip value of current word if it is blacklisted
+				if ($this->store->isBlacklisted($word)) {
+					continue;
+				}
+
 				$key = "{$word}{$this->store->delimiter}{$set}";
 				if($wordCountFromSet[$key] > 0)
 					$P['sets'][$set] += $wordCountFromSet[$key] / $setWordCounts[$set];
@@ -138,8 +157,29 @@ class NaiveBayesClassifier {
 		}
 	}
 
-	private function isBlacklisted($word) {
+	public function isBlacklisted($word) {
 		return $this->store->isBlacklisted($word);
+	}
+
+	/**
+	 * Removes word from blacklist
+	 *
+	 * @param $word
+	 * @return int
+	 */
+	public function removeFromBlacklist($word) {
+		return $this->store->removeFromBlacklist($word);
+	}
+
+	/**
+	 * Gets words count in listed sets
+	 *
+	 * @param array $sets list of sets to get words count
+	 *
+	 * @return array
+	 */
+	public function getSetWordCount(array $sets) {
+		return $this->store->getSetWordCount($sets);
 	}
 
 	private function _debug($msg) {
