@@ -3,12 +3,16 @@
 This project is somewhat a fork of a Ruby implementation of Naive Bayes Classifier <https://github.com/alexandru/stuff-classifier>. There is a blog posts <http://bionicspirit.com/blog/2012/02/09/howto-build-naive-bayes-classifier.html> finely written and simple in its algorithm which I'm sure just about anyone can implement in any programming language.
 
 The project is implemented in PHP in its simplest form. Fork it and play with the codes.
+Forked from https://github.com/tistaharahap/Simple-Naive-Bayes-Classifier-for-PHP
 
 Major redesign with the codes to only use Redis as store. Very impressive benchmarks.
 - Redis using php-redis extension <https://github.com/nicolasff/phpredis>
 
 
 ## Changelist
+
+[28 November 2018]
+Added redis storage interface, more specific logic for topface....
 
 [18 October 2012]
 Added offset/row to classify method and also deTrain method to tackle data updates if applicable.

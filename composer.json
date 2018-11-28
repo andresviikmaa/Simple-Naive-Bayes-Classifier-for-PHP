@@ -1,0 +1,27 @@
+{
+    "name": "Topface/SimpleBayesClassifier",
+    "type": "library",
+    "description": "Naive Bayes Classifier with Redis backend",
+    "keywords": ["bayes","classifier","redis"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Batista Harahap",
+            "email": "batista@bango29.com",
+            "homepage": "http://bango29.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.2.0",
+        "predis/predis": "~v1.0.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit":"3.7.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "SimpleBayesClassifier": "src"
+        }
+    }
+}
