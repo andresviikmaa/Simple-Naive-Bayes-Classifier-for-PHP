@@ -143,14 +143,10 @@ class NaiveBayesClassifier {
 		if(!empty($kw)) {
 			$ret = array();
 			foreach($kw as $k) {
-				$k = strtolower($k);
-//				$k = preg_replace("/[^\p{L}\s]+/i", "", $k);
-                $k = preg_replace("/^\w/i", "", $k);
+				$k = mb_strtolower($k);
 
-				if(!empty($k) && strlen($k) > 2) {
-					$k = strtolower($k);
-					if(!empty($k))
-						$ret[] = $k;
+				if(!empty($k) && mb_strlen($k) > 2) {
+                    $ret[] = $k;
 				}
 			}
 			return $ret;
