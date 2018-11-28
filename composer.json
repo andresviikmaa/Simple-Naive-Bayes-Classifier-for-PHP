@@ -1,9 +1,8 @@
 {
-    "name": "Bango29/SimpleBayesClassifier",
+    "name": "Topface/SimpleBayesClassifier",
     "type": "library",
     "description": "Naive Bayes Classifier with Redis backend",
     "keywords": ["bayes","classifier","redis"],
-    "homepage": "https://github.com/tistaharahap/Simple-Naive-Bayes-Classifier-for-PHP",
     "license": "MIT",
     "authors": [
         {
