@@ -100,7 +100,11 @@ class NaiveBayesClassifier {
         $setWordCounts = $this->store->getSetWordCount($sets);
         $wordCountFromSet = $this->store->getWordCountFromSet($keywords, $sets);
 
-        $this->debug(json_encode($wordCountFromSet));
+        if ($this->debugMode) {
+            foreach ($wordCountFromSet as $keySet => $countFromSet) {
+                $this->debug($keySet . ': ' . $countFromSet);
+            }
+        }
 
         foreach ($sets as $set) {
             if (empty($set)) {
